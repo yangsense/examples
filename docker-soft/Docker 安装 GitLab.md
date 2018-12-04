@@ -2,6 +2,8 @@
 
 ## 一、Docker安装GitLab
 
+在/usr/local/docker/gitlab/目录下创建docker-compose.yml文件
+
 我们使用 Docker 来安装和运行 GitLab 中文版,`docker-compose.yml` 配置如下：
 
 ```
@@ -10,11 +12,11 @@ services:
     web:
       image: 'twang2218/gitlab-ce-zh:10.5'
       restart: always
-      hostname: '192.168.1.110'
+      hostname: '192.168.1.110' #本地ip
       environment:
         TZ: 'Asia/Shanghai'
         GITLAB_OMNIBUS_CONFIG: |
-          external_url 'http://192.168.1.110:8080'
+          external_url 'http://192.168.1.110:8080' #本地ip
           gitlab_rails['gitlab_shell_ssh_port'] = 2222
           unicorn['port'] = 8888
           nginx['listen_port'] = 8080
